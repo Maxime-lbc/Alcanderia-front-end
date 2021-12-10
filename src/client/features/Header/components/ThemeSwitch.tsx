@@ -13,7 +13,7 @@ const urls = {
 const ThemeSwitch = () => {
   const theme = useAppSelector(state => state.themeReducer.value);
   const dispatch = useAppDispatch();
-  const [value, setValue, remove] = useLocalStorage(
+  const [value, setValue] = useLocalStorage(
     'alcanderia.theme',
     Themes.LIGHT,
   );
