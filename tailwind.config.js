@@ -36,15 +36,15 @@ module.exports = {
         160: '40rem',
       },
       width: {
-        "20%": '20%',
-      }
-    }
+        '20%': '20%',
+      },
+    },
   },
   variants: {
     animation: ['responsive', 'motion-safe', 'motion-reduce'],
     extend: {
-      width: ['hover']
+      width: ['hover'],
     },
   },
   plugins: [],
-}
+};

@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../../pages/Home/Home';
 import Vote from '../../pages/Vote/Vote';
 
-
 export const Router = () => {
   return (
     <Switch>

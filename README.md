@@ -103,8 +103,6 @@ Your app is ready to be deployed!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 ## Commits prefered syntaxe
 
 _When you commit changes this syntax is prefered. It makes the history looking better_
@@ -120,8 +118,6 @@ _When you commit changes this syntax is prefered. It makes the history looking b
 | New Template     | 🎉 New Template    |
 
 <!-- LICENSE -->
-
-
 
 ## License
 

@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useWindowScroll } from 'react-use';
 import { isEmpty } from '../../../global/utils/utils';
-import NavLink from './components/NavLink';
-import ThemeSwitch from './components/ThemeSwitch';
-import { LanguageSwitch } from '../../../global/components/LanguageSwitch';
+import NavLink from './components/NavLink/NavLink';
+import ThemeSwitch from './components/ThemeSwitch/ThemeSwitch';
+import { LanguageSwitch } from '../../../global/components/LanguageSwitch/LanguageSwitch';
+import styles from './styles';
+import { BurgerButton } from './components/BurgerButton/BurgerButton';
+import { ExternalLink } from './components/ExternalLink/ExternalLink';
 
 const Header = () => {
   const windowScroll = useWindowScroll();
@@ -21,105 +24,66 @@ const Header = () => {
   }, [mobileMenuOpened]);
 
   const disableScroll = () => {
-    // Get the current page scroll position
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft =
       window.pageXOffset || document.documentElement.scrollLeft;
-    // if any scroll is attempted, set this to the previous value
-    window.onscroll = function () {
-      window.scrollTo(scrollLeft, scrollTop);
-    };
+    window.onscroll = () => window.scrollTo(scrollLeft, scrollTop);
   };
 
   const enableScroll = () => {
-    window.onscroll = function () {};
+    window.onscroll = () => {};
   };
 
   return (
-    <div className={`${mobileMenuOpened && 'h-screen'}`}>
-      {scrolled && <div className="w-screen h-30" />}
+    <div className={`${mobileMenuOpened && styles.mobileOpened.container}`}>
+      {scrolled && <div className={styles.scrolled.true.div.invisible} />}
       <header
-        className={`overflow-x-hidden bg-gray-50 dark:bg-gray-900 z-10 w-screen px-5 py-5 transition duration-700 ${
-          scrolled ? 'h-1/6 sm:h-28 shadow-lg fixed top-0' : 'h-1/6 sm:h-28'
-        } flex flex-nowrap flex-row justify-between content-center items-center`}
+        className={`${styles.default.header} ${
+          scrolled ? styles.scrolled.true.header : styles.scrolled.false.header
+        }`}
       >
-        <div
-          className="sm:hidden"
-          onClick={() => setMobileMenuOpened(!mobileMenuOpened)}
-        >
-          <div
-            className={`w-7 h-1 bg-black transform dark:bg-gray-100 rounded-full my-1 duration-700 ${
-              mobileMenuOpened && '-rotate-45 translate-y-2'
-            }`}
-          ></div>
-          <div
-            className={`w-9 h-1 bg-black dark:bg-gray-100 rounded-full my-1 transform duration-700 ${
-              mobileMenuOpened && 'scale-0'
-            } `}
-          ></div>
-          <div
-            className={`${
-              !mobileMenuOpened && 'w-8'
-            } h-1 bg-black dark:bg-gray-100 rounded-full my-1 transform duration-700 ${
-              mobileMenuOpened && 'w-7 rotate-45 -translate-y-2'
-            }`}
-          ></div>
-        </div>
-        <img className="h-20" src="/assets/icons/256x256.png" alt="Logo" />
-        <nav className="hidden sm:block">
+        <BurgerButton opened={mobileMenuOpened} onClick={setMobileMenuOpened} />
+        <img
+          className={styles.default.logo}
+          src="/assets/icons/256x256.png"
+          alt="Logo"
+        />
+        <nav className={styles.default.nav.desktop}>
           <NavLink to="/">{t('Home')}</NavLink>
           {/* <NavLink to="/vote">{t('Vote')}</NavLink> */}
-          <a
-            href="https://alcanderia.tebex.io/"
-            className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <ExternalLink href="https://alcanderia.tebex.io/">
             {t('Shop')}
-          </a>
-          <a
-            href="https://wiki.alcanderia.fr/"
-            className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Wiki
-          </a>
+          </ExternalLink>
+          <ExternalLink href="https://wiki.alcanderia.fr/">Wiki</ExternalLink>
         </nav>
-        <div className="flex">
+        <div className={styles.default.rightSide}>
           <LanguageSwitch />
-          <ThemeSwitch/>
+          <ThemeSwitch />
         </div>
       </header>
       <nav
-        className={`sm:hidden ${
-          !mobileMenuOpened && 'hidden'
-        } z-20 h-5/6 transform w-screen fixed bottom-0 flex bg-gray-50 dark:bg-gray-900 flex-col content-center items-center justify-around`}
+        className={`${styles.default.nav.mobile} ${
+          !mobileMenuOpened && styles.mobileNotOpened.nav
+        } `}
       >
         <NavLink to="/" onClick={() => setMobileMenuOpened(false)}>
-        {t('Home')}
+          {t('Home')}
         </NavLink>
         {/* <NavLink to="/vote" onClick={() => setMobileMenuOpened(false)}>
         {t('Vote')}
         </NavLink> */}
-        <a
+        <ExternalLink
           href="https://alcanderia.tebex.io/"
-          className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
-          onClick={() => setMobileMenuOpened(false)}
-          target="_blank"
-          rel="noopener noreferrer"
+          setFalse={setMobileMenuOpened}
         >
           {t('Shop')}
-        </a>
-        <a
+        </ExternalLink>
+        <ExternalLink
           href="https://wiki.alcanderia.fr/"
-          className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
-          onClick={() => setMobileMenuOpened(false)}
-          target="_blank"
-          rel="noopener noreferrer"
+          setFalse={setMobileMenuOpened}
         >
           Wiki
-        </a>
+        </ExternalLink>
       </nav>
     </div>
   );
