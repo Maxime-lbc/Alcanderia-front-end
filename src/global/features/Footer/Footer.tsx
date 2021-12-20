@@ -9,6 +9,9 @@ const Footer = () => {
             <p className="text-md text-black dark:text-gray-100 font-bold mb-2">
               &copy; Alcanderia 2021-2022
             </p>
+            <p className="text-sm text-black dark:text-gray-100 font-bold mb-2">
+              contact@alcanderia.fr
+            </p>
           </div>
         </div>
       </div>

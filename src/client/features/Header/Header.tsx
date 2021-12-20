@@ -68,7 +68,7 @@ const Header = () => {
         <img className="h-20" src="/assets/icons/256x256.png" alt="Logo" />
         <nav className="hidden sm:block">
           <NavLink to="/">{t('Home')}</NavLink>
-          <NavLink to="/vote">{t('Vote')}</NavLink>
+          {/* <NavLink to="/vote">{t('Vote')}</NavLink> */}
           <a
             href="https://alcanderia.tebex.io/"
             className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
@@ -76,6 +76,14 @@ const Header = () => {
             rel="noopener noreferrer"
           >
             {t('Shop')}
+          </a>
+          <a
+            href="https://wiki.alcanderia.fr/"
+            className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Wiki
           </a>
         </nav>
         <div className="flex">
@@ -91,9 +99,9 @@ const Header = () => {
         <NavLink to="/" onClick={() => setMobileMenuOpened(false)}>
         {t('Home')}
         </NavLink>
-        <NavLink to="/vote" onClick={() => setMobileMenuOpened(false)}>
+        {/* <NavLink to="/vote" onClick={() => setMobileMenuOpened(false)}>
         {t('Vote')}
-        </NavLink>
+        </NavLink> */}
         <a
           href="https://alcanderia.tebex.io/"
           className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
@@ -102,6 +110,15 @@ const Header = () => {
           rel="noopener noreferrer"
         >
           {t('Shop')}
+        </a>
+        <a
+          href="https://wiki.alcanderia.fr/"
+          className="font-semibold text-xl dark:text-gray-100 dark:hover:text-indigo-600 hover:text-indigo-600 mx-10"
+          onClick={() => setMobileMenuOpened(false)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Wiki
         </a>
       </nav>
     </div>
