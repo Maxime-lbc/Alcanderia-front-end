@@ -11,13 +11,9 @@ export const themeSlice = createSlice({
   initialState,
   reducers: {
     switchTheme: (state: ThemeState) => {
-      if (state.value === 'light') {
-        document.body.classList.add('dark');
-        state.value = 'dark';
-      } else {
-        document.body.classList.remove('dark');
-        state.value = 'light';
-      }
+      document.body.classList.toggle('dark');
+      if (state.value === 'light') state.value = 'dark';
+      else state.value = 'light';
     },
   },
 });

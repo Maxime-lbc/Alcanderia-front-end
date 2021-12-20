@@ -8,7 +8,7 @@ export const Router = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/vote" exact component={Vote} />
+      {/* <Route path="/vote" exact component={Vote} /> */}
       <Route path="*" exact component={Home} />
     </Switch>
   );

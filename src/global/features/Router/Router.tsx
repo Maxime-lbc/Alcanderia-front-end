@@ -8,8 +8,9 @@ const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={ClientApp} />
-        <Route path="/admin" exact component={AdminApp} />
-        <Route path="/admin/*" component={AdminApp} />
+        {/* TODO ADMIN PART IN NEXT VERSION */}
+        {/* <Route path="/admin" exact component={AdminApp} /> */}
+        {/* <Route path="/admin/*" component={AdminApp} /> */}
         <Route path="/*" component={ClientApp} />
       </Switch>
     </BrowserRouter>
