@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles';
 
 interface Props {
   src: string;
@@ -6,7 +7,7 @@ interface Props {
 }
 
 function Illustration({ alt, src }: Props) {
-  return <img className="h-44 self-center pt-5 md:pt-0 md:h-auto md:w-20%" src={src} alt={alt} />;
+  return <img className={styles.illustration} src={src} alt={alt} />;
 }
 
 export default Illustration;

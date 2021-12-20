@@ -1,9 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useLocalStorage } from 'react-use';
-import { useAppDispatch, useAppSelector } from '../../../../global/redux/hooks';
-import { switchTheme } from '../../../../global/redux/slices/themeSlice';
-import { Themes } from '../../../../global/enums/themes.enum';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../../global/redux/hooks';
+import { switchTheme } from '../../../../../global/redux/slices/themeSlice';
+import { Themes } from '../../../../../global/enums/themes.enum';
+import styles from './styles';
 
 const urls = {
   light: '/assets/images/sun.svg',
@@ -13,10 +17,7 @@ const urls = {
 const ThemeSwitch = () => {
   const theme = useAppSelector(state => state.themeReducer.value);
   const dispatch = useAppDispatch();
-  const [value, setValue] = useLocalStorage(
-    'alcanderia.theme',
-    Themes.LIGHT,
-  );
+  const [value, setValue] = useLocalStorage('alcanderia.theme', Themes.LIGHT);
 
   // Put theme choice in the local storage for next time
   useEffect(() => {
@@ -30,16 +31,13 @@ const ThemeSwitch = () => {
   }, []);
 
   return (
-    <div
-      className="px-5 mr-5 relative inline-block w-16 h-7 bg-gray-600 dark:bg-gray-600 rounded-full cursor-pointer"
-      onClick={() => dispatch(switchTheme())}
-    >
+    <div className={styles.container} onClick={() => dispatch(switchTheme())}>
       <img
         src={theme === 'light' ? urls.light : urls.dark}
         alt={theme === 'light' ? 'Light theme' : 'Dark theme'}
-        className={`h-7 absolute left-0 ${
-          theme !== 'light' && 'transform translate-x-8'
-        } transition duration-1000`}
+        className={`${styles.img.default} ${
+          theme !== 'light' && styles.img.dark
+        } `}
       />
     </div>
   );

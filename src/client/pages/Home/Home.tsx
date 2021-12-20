@@ -1,53 +1,48 @@
 import React from 'react';
 import Carrousel from './features/Carrousel/Carrousel';
-import Title from './components/Title';
-import MainWord from './components/MainWord';
-import Section from './components/Section';
-import Paragraph from './components/Paragraph';
-import Illustration from './components/Illustration';
-import Socials from './components/Socials';
+import Title from './components/Title/Title';
+import MainWord from './components/MainWord/MainWord';
+import Section from './components/Section/Section';
+import Paragraph from './components/Paragraph/Paragraph';
+import Illustration from './components/Illustration/Illustration';
+import Socials from './components/Socials/Socials';
 import { useTranslation } from 'react-i18next';
+import styles from './styles';
 
 const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="home overflow-hidden">
+    <section id="home" className={styles.section}>
       <Carrousel />
       <Section>
         <Title>
-          <MainWord>{t('WhatIs')}</MainWord> {t('isENOnly')} <br className="block sm:hidden" />{' '}
-          Alcanderia ?
+          <MainWord>{t('WhatIs')}</MainWord> {t('isENOnly')}{' '}
+          <br className={styles.br} /> Alcanderia ?
         </Title>
-        <Paragraph>
-          {t('alcanderiaDescription')}
-        </Paragraph>
+        <Paragraph>{t('alcanderiaDescription')}</Paragraph>
         <Illustration src="/assets/images/AlcaPres.png" alt="Illustration" />
-        <div className="hidden md:block" />
+        <div className={styles.div.invisible} />
       </Section>
       <Section inverted>
         <Title>
-        {t('HowTo')} <MainWord>{t('join')}</MainWord> {t('usENOnly')} ?
+          {t('HowTo')} <MainWord>{t('join')}</MainWord> {t('usENOnly')} ?
         </Title>
-        <Paragraph inverted>
-          {t('joinText')}
-        </Paragraph>
+        <Paragraph inverted>{t('joinText')}</Paragraph>
         <Socials />
-        <div className="hidden md:block" />
+        <div className={styles.div.invisible} />
       </Section>
       <Section>
         <Title>
-        {t('isAlcanderia')}{' '}
+          {t('isAlcanderia')}{' '}
           <MainWord>
-            free <br className="block sm:hidden" /> to play
+            free <br className={styles.br} /> to play
           </MainWord>{' '}
           ?
         </Title>
-        <Paragraph>
-        {t('F2PText')}
-        </Paragraph>
+        <Paragraph>{t('F2PText')}</Paragraph>
         <Illustration src="/assets/images/freetoplay.png" alt="Illustration" />
-        <div className="hidden md:block" />
+        <div className={styles.div.invisible} />
       </Section>
     </section>
   );

@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
-import { Languages } from '../enums/languages.enum';
+import { Languages } from '../../enums/languages.enum';
 import { useLocalStorage } from 'react-use';
+import styles from './styles';
 
 type lang = Languages.EN | Languages.FR;
 
@@ -54,9 +55,9 @@ export const LanguageSwitch = () => {
   return (
     <img
       onClick={() => changeLanguage()}
-      className="h-7 px-5 cursor-pointer"
+      className={styles.img}
       src={getFlag(language)}
-      alt="fr"
+      alt={language}
     />
   );
 };
