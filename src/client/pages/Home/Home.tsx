@@ -8,6 +8,8 @@ import Illustration from './components/Illustration/Illustration';
 import Socials from './components/Socials/Socials';
 import { useTranslation } from 'react-i18next';
 import styles from './styles';
+import { DownloadButton } from './features/DownloadButton/DownloadButton';
+import { DownloadsSection } from './components/DownloadsSection/DownloadsSection';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -32,6 +34,12 @@ const Home = () => {
         <Socials />
         <div className={styles.div.invisible} />
       </Section>
+
+      <DownloadsSection>
+        <DownloadButton os="windows" />
+      </DownloadsSection>
+
+
       <Section>
         <Title>
           {t('isAlcanderia')}{' '}
