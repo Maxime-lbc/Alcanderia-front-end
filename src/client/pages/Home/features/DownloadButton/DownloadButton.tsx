@@ -1,15 +1,18 @@
 import React from 'react';
 import styles from './styles';
 
+type OS = 'windows' | 'linux';
 interface Props {
-  os: string;
+  os: OS;
 }
 
 export const DownloadButton = ({ os }: Props) => {
-
-
   return (
-    <a className="py-6" href="downloads/launcher.exe" download="AlcaLauncher.exe">
+    <a
+      className="py-6"
+      href={`downloads/launcher.${getExtension(os)}`}
+      download={`AlcaLauncher.${getExtension(os)}`}
+    >
       {/* <span className={styles.container}> */}
       <span className="w-64 md:w-96 bg-gray-100 hover:bg-indigo-600 shadow-lg transition duration-300 rounded-full py-5 px-8 flex flex-col md:flex-row justify-between items-center">
         <img className="w-3/12" src={`assets/images/${os}.png`} alt="logo" />
@@ -24,4 +27,15 @@ export const DownloadButton = ({ os }: Props) => {
       </span>
     </a>
   );
+};
+
+const getExtension = (os: OS) => {
+  switch (os) {
+    case 'windows':
+      return 'exe';
+    case 'linux':
+      return 'deb';
+    default:
+      return 'exe';
+  }
 };
