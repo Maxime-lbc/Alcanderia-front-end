@@ -1,7 +1,4 @@
-import React from 'react';
-import styles from './styles';
-
-type OS = 'windows' | 'linux';
+type OS = 'windows' | 'linux' | 'mac';
 interface Props {
   os: OS;
 }
@@ -11,7 +8,7 @@ export const DownloadButton = ({ os }: Props) => {
     <a
       className="py-6"
       href={`downloads/launcher.${getExtension(os)}`}
-      download={`AlcaLauncher.${getExtension(os)}`}
+      download={`AlcaLauncherInstaller.${getExtension(os)}`}
     >
       {/* <span className={styles.container}> */}
       <span className="w-64 md:w-96 bg-gray-100 hover:bg-indigo-600 shadow-lg transition duration-300 rounded-full py-5 px-8 flex flex-col md:flex-row justify-between items-center">
@@ -35,6 +32,8 @@ const getExtension = (os: OS) => {
       return 'exe';
     case 'linux':
       return 'deb';
+    case 'mac':
+      return 'dmg';
     default:
       return 'exe';
   }

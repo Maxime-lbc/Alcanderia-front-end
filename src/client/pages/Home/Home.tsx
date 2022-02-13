@@ -38,6 +38,7 @@ const Home = () => {
       <DownloadsSection>
         <DownloadButton os="windows" />
         <DownloadButton os="linux" />
+        <DownloadButton os="mac" />
       </DownloadsSection>
 
 
